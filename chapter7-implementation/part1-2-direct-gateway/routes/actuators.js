@@ -7,16 +7,36 @@ router.route('/').get(function (req, res, next) {
   next();
 });
 
+router.route('/buzzer').get(function (req, res, next) {
+  req.result = resources.pi.actuators.buzzer;
+  next();
+}).put(function(req, res, next) {
+  var buzzer = resources.pi.actuators.buzzer;
+  buzzer.value = req.body.value;
+  req.result = buzzer;
+  next();
+});
+
 router.route('/leds').get(function (req, res, next) {
   req.result = resources.pi.actuators.leds;
   next();
 });
 
-router.route('/leds/:id').get(function (req, res, next) { //#A
-  req.result = resources.pi.actuators.leds[req.params.id];
+router.route('/leds/red').get(function (req, res, next) { //#A
+  req.result = resources.pi.actuators.leds.red;
   next();
 }).put(function(req, res, next) { //#B
-  var selectedLed = resources.pi.actuators.leds[req.params.id];
+  var selectedLed = resources.pi.actuators.leds.red;
+  selectedLed.value = req.body.value; //#C
+  req.result = selectedLed;
+  next();
+});
+
+router.route('/leds/blue').get(function (req, res, next) { //#A
+  req.result = resources.pi.actuators.leds.blue;
+  next();
+}).put(function(req, res, next) { //#B
+  var selectedLed = resources.pi.actuators.leds.blue;
   selectedLed.value = req.body.value; //#C
   req.result = selectedLed;
   next();

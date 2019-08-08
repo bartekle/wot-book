@@ -8,11 +8,6 @@ router.route('/').get(function (req, res, next) {
   next(); //#B
 });
 
-router.route('/pir').get(function (req, res, next) {
-  req.result = resources.pi.sensors.pir;
-  next();
-});
-
 router.route('/temperature').get(function (req, res, next) {
   req.result = resources.pi.sensors.temperature;
   next();
