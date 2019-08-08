@@ -26,9 +26,11 @@ exports.stop = function () {
 };
 
 function observe(what) {
-  Object.observe(what, function (changes) {
-    console.info('Change detected by plugin for %s...', pluginName);
-    switchOnOff(model.value); //#B
+  //Object.observe(what, function (changes) {
+  //  console.info('Change detected by plugin for %s...', pluginName);
+  //  switchOnOff(model.value); //#B
+  var p = Proxy(what, function() {
+     //  TU WJEBAĆ Z BIBLIOTEKI OBJECT-OBSERVER
   });
 };
 
