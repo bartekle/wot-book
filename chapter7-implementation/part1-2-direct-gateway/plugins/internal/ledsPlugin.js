@@ -1,4 +1,4 @@
-import { Observable } from 'dist/object-observer.min.js';
+var Observable = require("object-observer")
 var resources = require('./../../resources/model');
 var actuator, interval;
 var model = resources.pi.actuators.leds.red;
