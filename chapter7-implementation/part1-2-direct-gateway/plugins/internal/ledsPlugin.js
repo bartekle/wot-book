@@ -28,11 +28,16 @@ exports.stop = function () {
 function observe(what) {
   //Object.observe(what, function (changes) {
   //  console.info('Change detected by plugin for %s...', pluginName);
-  //  switchOnOff(model.value); //#B
-  var p = Proxy(what, function() {
+  //  switchOnOff(model.value); //#B;
+  observableModel = Observable.from(model);
+  observableModel.observe(changes => {
+    changes.forEach(change => {
+      console.log(change);
+      switchOnOff(model.value);
+    })
+  })
      //  TU WJEBAĆ Z BIBLIOTEKI OBJECT-OBSERVER
-  });
-};
+  };
 
 function switchOnOff(value) {
   if (!localParams.simulate) {

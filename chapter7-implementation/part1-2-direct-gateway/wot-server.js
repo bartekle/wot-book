@@ -5,7 +5,7 @@ var httpServer = require('./servers/http'),
 
 // Internal Plugins
 var ledsPlugin = require('./plugins/internal/ledsPlugin'), //#A
-  pirPlugin = require('./plugins/internal/pirPlugin'), //#A
+  buzzerPlugin = require('./plugins/internal/pirPlugin'), //#A
   dhtPlugin = require('./plugins/internal/DHT22SensorPlugin'); //#A
 
 // Internal Plugins for sensors/actuators connected to the PI GPIOs
@@ -45,4 +45,3 @@ var server = httpServer.listen(resources.pi.port, function () {
  //#B Start the HTTP server by invoking listen() on the Express application
  //#C Once the server is started the callback is invoked
  */
-
