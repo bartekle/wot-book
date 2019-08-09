@@ -4,18 +4,17 @@ var actuator, interval;
 var model = resources.pi.actuators.buzzer;
 var pluginName = model.name;
 var localParams = {'simulate': false, 'frequency': 2000};
-
+/*
 observableModel = Observable.from(model);
 observableModel.observe(changes => {
   changes.forEach(change => {
     console.log(change);
     switchOnOff(model.value);
   })
-});
-
+*/
 exports.start = function (params) {
   localParams = params;
-  observe(model); //#A
+//  observe(model); //#A
 
   if (localParams.simulate) {
     simulate();
