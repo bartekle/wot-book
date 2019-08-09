@@ -1,4 +1,4 @@
-var Observable = require("object-observer")
+let Observable = require("object-observer").Observable;
 var resources = require('./../../resources/model');
 var actuator, interval;
 var model = resources.pi.actuators.leds.red;
