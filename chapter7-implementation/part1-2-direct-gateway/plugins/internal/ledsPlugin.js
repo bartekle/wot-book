@@ -1,5 +1,5 @@
 var resources = require('./../../resources/model');
-import { Observable } from 'dist/object-observer.min.js';
+let Observable = require('./dist/node/object-observer').Observable;
 var actuator, interval;
 var model = resources.pi.actuators.leds.red;
 var pluginName = model.name;
