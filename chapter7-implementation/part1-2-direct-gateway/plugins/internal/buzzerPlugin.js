@@ -5,6 +5,14 @@ var model = resources.pi.actuators.buzzer;
 var pluginName = model.name;
 var localParams = {'simulate': false, 'frequency': 2000};
 
+observableModel = Observable.from(model);
+observableModel.observe(changes => {
+  changes.forEach(change => {
+    console.log(change);
+    switchOnOff(model.value);
+  })
+});
+
 exports.start = function (params) {
   localParams = params;
   observe(model); //#A
@@ -25,19 +33,12 @@ exports.stop = function () {
   console.info('%s plugin stopped!', pluginName);
 };
 
-function observe(what) {
+
   //Object.observe(what, function (changes) {
   //  console.info('Change detected by plugin for %s...', pluginName);
   //  switchOnOff(model.value); //#B;
-  observableModel = Observable.from(what);
-  observableModel.observe(changes => {
-    changes.forEach(change => {
-      console.log(change);
-      switchOnOff(model.value);
-    })
-  })
+
      //  TU WJEBAĆ Z BIBLIOTEKI OBJECT-OBSERVER
-  };
 
 function switchOnOff(value) {
   if (!localParams.simulate) {
