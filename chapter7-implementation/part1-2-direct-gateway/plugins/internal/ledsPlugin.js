@@ -4,7 +4,7 @@ var actuator, interval;
 var model = resources.pi.actuators.leds.red;
 var pluginName = model.name;
 var localParams = {'simulate': false, 'frequency': 2000};
-/*
+
 //Object.observe(what, function (changes) {
 //  console.info('Change detected by plugin for %s...', pluginName);
 //  switchOnOff(model.value); //#B;
@@ -15,7 +15,7 @@ observableModel.observe(changes => {
     switchOnOff(model.value);
   })
 });
-*/
+//*/
    //  TU WJEBAĆ Z BIBLIOTEKI OBJECT-OBSERVER
 
 exports.start = function (params) {
