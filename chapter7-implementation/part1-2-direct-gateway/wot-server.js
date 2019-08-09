@@ -5,7 +5,7 @@ var httpServer = require('./servers/http'),
 
 // Internal Plugins
 var ledsPlugin = require('./plugins/internal/ledsPlugin'), //#A
-  buzzerPlugin = require('./plugins/internal/pirPlugin'), //#A
+  buzzerPlugin = require('./plugins/internal/buzzerPlugin'), //#A
   dhtPlugin = require('./plugins/internal/DHT22SensorPlugin'); //#A
 
 // Internal Plugins for sensors/actuators connected to the PI GPIOs
