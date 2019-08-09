@@ -1,4 +1,4 @@
-let Observable = require("object-observer").Observable;
+
 var resources = require('./../../resources/model');
 var actuator, interval;
 var model = resources.pi.actuators.leds.red;
@@ -8,7 +8,7 @@ var localParams = {'simulate': false, 'frequency': 2000};
 //Object.observe(what, function (changes) {
 //  console.info('Change detected by plugin for %s...', pluginName);
 //  switchOnOff(model.value); //#B;
-observableModel = Observable.from(model);
+/*observableModel = Observable.from(model);
 observableModel.observe(changes => {
   changes.forEach(change => {
     console.log(change);
@@ -17,6 +17,15 @@ observableModel.observe(changes => {
 });
 //*/
    //  TU WJEBAĆ Z BIBLIOTEKI OBJECT-OBSERVER
+var prox = new Proxy(model, {
+  get: function (target, prop, receiver){
+    console.info('Change detected by plugin for %s...', pluginName);
+    switchOnOff(model.value);
+    return Reflect.get(...arguments);
+  }
+})
+
+
 
 exports.start = function (params) {
   localParams = params;
